@@ -1,24 +1,24 @@
 Ext.define('Challenge.controller.Rows', {
-	extend: 'Ext.app.Controller',
+  extend: 'Ext.app.Controller',
 
-	views: ['row.List', 'row.Control'],
-	models: ['Row'],
-	store: ['Rows'],
+  views: ['row.List', 'row.Control'],
+  models: ['Row'],
+  store: ['Rows'],
 
-	init: function () {
+  init: function () {
 
-		this.control({
-			'rowControl button[action="add"]': {
-				click: this.onAdd
-			},
+    this.control({
+      'rowControl button[action="add"]': {
+        click: this.onAdd
+      },
 
-			'rowControl button[action="edit"]': {
-				click: this.onEdit
-			},
+      'rowControl button[action="edit"]': {
+        click: this.onEdit
+      },
 
-			'rowControl button[action="delete"]': {
-				click: this.onDelete
-			},
+      'rowControl button[action="delete"]': {
+        click: this.onDelete
+      },
 
       'rowControl textfield': {
         keydown: this.onSearch
@@ -31,8 +31,8 @@ Ext.define('Challenge.controller.Rows', {
       'rowList checkcolumn': {
         headerclick: this.onRowSelected
       }
-		});
-	},
+    });
+  },
 
   onSearch: function (event, eventOptions) {
     var store = this.getStore('Rows'),
@@ -51,17 +51,17 @@ Ext.define('Challenge.controller.Rows', {
     }
   },
 
-	onAdd: function () {
-		console.log('add');
-	},
+  onAdd: function () {
+    console.log('add');
+  },
 
-	onEdit: function () {
-		console.log('edit');
-	},
+  onEdit: function () {
+    console.log('edit');
+  },
 
-	onDelete: function () {
-		console.log('delete');
-	},
+  onDelete: function () {
+    console.log('delete');
+  },
 
   onSortChange: function (event, newValue) {
     console.log('changes');

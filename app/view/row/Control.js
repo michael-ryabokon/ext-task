@@ -1,40 +1,46 @@
 Ext.define('Challenge.view.row.Control', {
-	extend: 'Ext.panel.Panel',
+  extend: 'Ext.panel.Panel',
 
-	xtype: 'rowControl',
+  xtype: 'rowControl',
 
-	layout: {
+  layout: {
     type: 'hbox',
-    align : 'stretch'
+    align: 'stretch'
   },
 
-	items: [{
-    // add
-    xtype: 'button',
-    text: 'add',
-    action: 'add'
-  }, {
-    // edit
-    xtype: 'button',
-    text: 'edit',
-    action: 'edit'
-  }, {
-    // delete
-    xtype: 'button',
-    text: 'delete',
-    action: 'delete'
-  }, {
-    // sortby
-    xtype: 'combobox',
-    editable: false,
-    fieldLabel: 'Sort by',
-    labelAlign: 'right',
-    value: 'Updated',
-    store: ['Updated', 'CTR', 'Network']
-  }, {
-    // search
-    xtype: 'textfield',
-    emptyText: 'Search',
-    enableKeyEvents: true
-  }]
+  items: [
+    {
+      // add
+      xtype: 'button',
+      text: 'add',
+      action: 'add'
+    },
+    {
+      // edit
+      xtype: 'button',
+      text: 'edit',
+      action: 'edit'
+    },
+    {
+      // delete
+      xtype: 'button',
+      text: 'delete',
+      action: 'delete'
+    },
+    {
+      // sortby
+      xtype: 'combobox',
+      editable: false,
+      fieldLabel: 'Sort by',
+      labelAlign: 'right',
+      value: 'Updated',
+      store: ['Updated', 'CTR', 'Network']
+    },
+    {
+      // search
+      xtype: 'textfield',
+      emptyText: 'Search',
+      enableKeyEvents: true
+    }
+  ]
 });
