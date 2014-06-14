@@ -1,8 +1,13 @@
 Ext.application({
-  name: 'Application',
-  // Automatically create an instance of AM.view.Viewport
-  // on application launch
+	// extend: 'Ext.app.Application'
+  name: 'Challenge',
+  
+  controllers: ['Rows'],
+  stores: ['Rows'],
+
   autoCreateViewport: true,
-  // Attach controllers
-  controllers: ['ItemController']
+
+  launch: function () {
+  	// debugger;
+  }
 });
