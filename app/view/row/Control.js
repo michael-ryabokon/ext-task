@@ -26,6 +26,7 @@ Ext.define('Challenge.view.row.Control', {
   }, {
     // sortby
     xtype: 'combobox',
+    editable: false,
     fieldLabel: 'Sort by',
     labelAlign: 'right',
     value: 'Updated',
@@ -33,6 +34,7 @@ Ext.define('Challenge.view.row.Control', {
   }, {
     // search
     xtype: 'textfield',
-    emptyText: 'Search'
+    emptyText: 'Search',
+    enableKeyEvents: true
   }]
-})
+});
