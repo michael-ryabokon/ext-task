@@ -22,7 +22,6 @@ Ext.define('Challenge.view.Viewport', {
         {
           // grid
           xtype: 'rowList'
-
         }
       ]
     }

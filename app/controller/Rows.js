@@ -107,7 +107,14 @@ Ext.define('Challenge.controller.Rows', {
   },
 
   onDelete: function () {
-    console.log('delete');
+    var store = this.getStore('Rows'),
+        toDelete = [];
+
+    store.each(function (model) {
+      model.get('checked') && toDelete.push(model);
+    });
+
+    store.remove(toDelete);
   },
 
   onSortChange: function (event, newValue) {
