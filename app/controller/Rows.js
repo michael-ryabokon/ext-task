@@ -1,12 +1,17 @@
 Ext.define('Challenge.controller.Rows', {
   extend: 'Ext.app.Controller',
 
-  views: ['row.List', 'row.Control'],
+  views: [
+    'row.List',
+    'row.Control',
+    'window.DialogWindow',
+    'window.CreateEditForm'
+  ],
+
   models: ['Row'],
   store: ['Rows'],
 
   init: function () {
-
     this.control({
       'rowControl button[action="add"]': {
         click: this.onAdd
@@ -29,6 +34,7 @@ Ext.define('Challenge.controller.Rows', {
       },
 
       'rowList checkcolumn': {
+//        doesn't work
         headerclick: this.onRowSelected
       }
     });
@@ -52,11 +58,52 @@ Ext.define('Challenge.controller.Rows', {
   },
 
   onAdd: function () {
-    console.log('add');
+    this.dialog = Challenge.view.window.DialogWindow.create({
+      title: 'Add new row',
+      items: {
+        xtype: 'createEditForm'
+      },
+      buttons: [{
+        text: 'add',
+        action: 'add',
+        handler: this.onAddRow.bind(this)
+      }]
+    }).show();
+  },
+
+  onAddRow: function () {
+    var data = this.dialog.down('form').getForm().getValues();
+
+    this.getStore('Rows').add(data);
+    this.dialog.close();
   },
 
   onEdit: function () {
-    console.log('edit');
+    this.selectedModel = this.getStore('Rows').findRecord('checked', true);
+
+    this.dialog = Challenge.view.window.DialogWindow.create({
+      title: 'Edit row',
+      items: {
+        xtype: 'createEditForm'
+      },
+      buttons: [{
+        text: 'edit',
+        action: 'edit',
+        handler: this.onEditRow.bind(this)
+      }]
+    });
+    this.dialog
+        .show()
+        .down('form')
+        .getForm()
+        .loadRecord(this.selectedModel);
+  },
+
+  onEditRow: function () {
+    var data = this.dialog.down('form').getForm().getValues();
+
+    this.selectedModel.set(data);
+    this.dialog.close();
   },
 
   onDelete: function () {

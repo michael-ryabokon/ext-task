@@ -15,15 +15,15 @@ Ext.define('Challenge.model.Row', {
     },
     {
       name: 'parama',
-      type: 'int'
+      type: 'string'
     },
     {
       name: 'paramb',
-      type: 'int'
+      type: 'string'
     },
     {
       name: 'paramc',
-      type: 'int'
+      type: 'string'
     },
     {
       name: 'ctr',
@@ -31,7 +31,8 @@ Ext.define('Challenge.model.Row', {
     },
     {
       name: 'updated',
-      type: 'date'
+      type: 'date',
+      defaultValue: new Date()
     }
   ]
 });
