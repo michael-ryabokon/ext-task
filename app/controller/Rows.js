@@ -8,6 +8,16 @@ Ext.define('Challenge.controller.Rows', {
     'window.CreateEditForm'
   ],
 
+  refs: [
+    {
+      ref: 'editButton',
+      selector: 'rowControl button[action="edit"]'
+    }, {
+      ref: 'deleteButton',
+      selector: 'rowControl button[action="delete"]'
+    }
+  ],
+
   models: ['Row'],
   store: ['Rows'],
 
@@ -34,27 +44,9 @@ Ext.define('Challenge.controller.Rows', {
       },
 
       'rowList checkcolumn': {
-//        doesn't work
-        headerclick: this.onRowSelected
+        checkchange: this.onRowSelected.bind(this)
       }
     });
-  },
-
-  onSearch: function (event, eventOptions) {
-    var store = this.getStore('Rows'),
-        value = eventOptions.currentTarget.value;
-
-    if (eventOptions.keyCode === 13) {
-      if (value !== '') {
-        store.filter({
-          caseSensitive: false,
-          property: 'network',
-          value: value
-        });
-      } else {
-        store.clearFilter();
-      }
-    }
   },
 
   onAdd: function () {
@@ -107,21 +99,45 @@ Ext.define('Challenge.controller.Rows', {
   },
 
   onDelete: function () {
+    this.getStore('Rows').remove(this.getCheckedRows());
+  },
+
+  onSearch: function (event, eventOptions) {
     var store = this.getStore('Rows'),
-        toDelete = [];
+        value = eventOptions.currentTarget.value;
 
-    store.each(function (model) {
-      model.get('checked') && toDelete.push(model);
-    });
+    if (eventOptions.keyCode === 13) {
+      if (value !== '') {
+        store.filter({
+          caseSensitive: false,
+          property: 'network',
+          value: value
+        });
+      } else {
+        store.clearFilter();
+      }
+    }
+  },
 
-    store.remove(toDelete);
+  onRowSelected: function () {
+    var checkedLength = this.getCheckedRows().length;
+
+    this.getEditButton()[(checkedLength === 1) ? 'enable' : 'disable']();
+    this.getDeleteButton()[(checkedLength >= 1) ? 'enable' : 'disable']();
   },
 
   onSortChange: function (event, newValue) {
     console.log('changes');
   },
 
-  onRowSelected: function () {
-    console.log('selected');
+  getCheckedRows: function () {
+    var store = this.getStore('Rows'),
+        checked = [];
+
+    store.each(function (model) {
+      model.get('checked') && checked.push(model);
+    });
+
+    return checked;
   }
 });

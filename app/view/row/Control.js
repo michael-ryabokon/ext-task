@@ -19,13 +19,15 @@ Ext.define('Challenge.view.row.Control', {
       // edit
       xtype: 'button',
       text: 'edit',
-      action: 'edit'
+      action: 'edit',
+      disabled: true
     },
     {
       // delete
       xtype: 'button',
       text: 'delete',
-      action: 'delete'
+      action: 'delete',
+      disabled: true
     },
     {
       // sortby
