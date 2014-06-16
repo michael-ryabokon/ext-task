@@ -35,7 +35,7 @@ Ext.define('Challenge.view.row.Control', {
       editable: false,
       fieldLabel: 'Sort by',
       labelAlign: 'right',
-      value: 'Updated',
+      value: "Doesn't work",
       store: ['Updated', 'CTR', 'Network']
     },
     {

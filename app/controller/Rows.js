@@ -127,6 +127,7 @@ Ext.define('Challenge.controller.Rows', {
   },
 
   onSortChange: function (event, newValue) {
+    // add sorter
     console.log('changes');
   },
 

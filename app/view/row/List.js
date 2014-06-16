@@ -4,6 +4,7 @@ Ext.define('Challenge.view.row.List', {
   xtype: 'rowList',
 
   store: 'Rows',
+  stripeRows: true,
 
   columns: [
     {
