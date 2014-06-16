@@ -10,6 +10,10 @@ Ext.define('Challenge.view.Viewport', {
     {
       // main container
       xtype: 'container',
+      style: {
+        margin: '100px auto',
+        width: '700px'
+      },
       layout: {
         type: 'vbox',
         align: 'stretch'

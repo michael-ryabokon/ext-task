@@ -13,13 +13,19 @@ Ext.define('Challenge.view.row.Control', {
       // add
       xtype: 'button',
       text: 'add',
-      action: 'add'
+      action: 'add',
+      style: {
+        marginRight: '20px'
+      }
     },
     {
       // edit
       xtype: 'button',
       text: 'edit',
       action: 'edit',
+      style: {
+        marginRight: '20px'
+      },
       disabled: true
     },
     {
@@ -27,6 +33,9 @@ Ext.define('Challenge.view.row.Control', {
       xtype: 'button',
       text: 'delete',
       action: 'delete',
+      style: {
+        marginRight: '20px'
+      },
       disabled: true
     },
     {
